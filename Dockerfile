@@ -1,10 +1,10 @@
-# docker_mpd_lite
+# docker_test
 FROM alpine:edge as build_base
 
 LABEL version="0.23.6"
 LABEL maintainers="[John Sing Dao Siu](https://github.com/J-Siu)"
-LABEL name="mpd_lite"
-LABEL usage="https://github.com/J-Siu/docker_mpd_lite/blob/master/README.md"
+LABEL name="test"
+LABEL usage="https://github.com/J-Siu/docker_test/blob/master/README.md"
 LABEL description="Docker - MPD Lite with UID/GID + audio GID handling."
 
 RUN wget https://www.musicpd.org/download/mpd/0.23/mpd-0.23.6.tar.xz \
@@ -114,8 +114,8 @@ FROM alpine:edge
 
 LABEL version="0.23.6"
 LABEL maintainers="[John Sing Dao Siu](https://github.com/J-Siu)"
-LABEL name="mpd_lite"
-LABEL usage="https://github.com/J-Siu/docker_mpd_lite/blob/master/README.md"
+LABEL name="test"
+LABEL usage="https://github.com/J-Siu/docker_test/blob/master/README.md"
 LABEL description="Docker - MPD Lite with UID/GID + audio GID handling."
 
 COPY --from=build_base /mpd-0.23.6/output/release/mpd /usr/bin/
