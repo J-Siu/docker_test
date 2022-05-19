@@ -1,10 +1,7 @@
-name: docker
+name: PubDocker
 
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - "master"
     tags: ["*"]
 
 jobs:
