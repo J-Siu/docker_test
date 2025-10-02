@@ -6,6 +6,8 @@ Docker image for testing only. Print "testing".
 
 - v0.0.10
   - update Github Actions
+- v0.0.11
+  - update Github Actions
 
 ## License
 
