@@ -19,7 +19,7 @@ jobs:
         with:
           title: |
             $(grep 'LABEL title' Dockerfile|tail -1|cut -d= -f2|sed 's/"//g')
-          images: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ title }}
+          # images: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ title }}
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v4
