@@ -1,0 +1,33 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    tags: ["*"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Extract Docker image metadata
+        id: img
+        run: |
+          NAME=$(grep 'LABEL name' Dockerfile|tail -1|cut -d= -f2|sed 's/"//g')
+          VER=$(grep 'ARG VERSION' Dockerfile|tail -1|cut -d= -f2|sed 's/"//g')
+          echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "ver=$VER" >> $GITHUB_OUTPUT
+
+      - name: push README to Dockerhub
+        uses: christian-korneck/update-container-description-action@v1
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_PASS: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        with:
+          destination_container_repo: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}
+          provider: dockerhub
+          readme_file: 'README.md'
+          short_description: 'my short description 😊'
