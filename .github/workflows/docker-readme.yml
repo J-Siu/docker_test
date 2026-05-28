@@ -30,4 +30,4 @@ jobs:
           destination_container_repo: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}
           provider: dockerhub
           readme_file: 'README.md'
-          short_description: 'my short description 😊'
+          short_description: ${{ github.event.repository.description }}
