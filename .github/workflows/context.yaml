@@ -32,4 +32,6 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
       - name: Dump description
-        run: echo ${{ github.context.event.description }}
+        env:
+          DESC: ${{ github.context.event.description }}
+        run: echo "$DESC"
