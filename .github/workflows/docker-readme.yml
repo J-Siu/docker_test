@@ -2,8 +2,10 @@ name: Docker Readme
 
 on:
   push:
-    tags: ["*"]
-  pull_request:
+    branches:
+      - main
+    paths:
+      - README.md
   workflow_dispatch:
 
 jobs:
@@ -21,13 +23,10 @@ jobs:
           echo "name=$NAME" >> $GITHUB_OUTPUT
           echo "ver=$VER" >> $GITHUB_OUTPUT
 
-      - name: push README to Dockerhub
-        uses: christian-korneck/update-container-description-action@v1
-        env:
-          DOCKER_USER: ${{ secrets.DOCKER_HUB_USERNAME }}
-          DOCKER_PASS: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: push README
+        uses: peter-evans/dockerhub-description@v5
         with:
-          destination_container_repo: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}
-          provider: dockerhub
-          readme_file: 'README.md'
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          repository: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}
           short_description: ${{ github.event.repository.description }}
