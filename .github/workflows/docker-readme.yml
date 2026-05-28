@@ -26,5 +26,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          repository: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}
-          short-description: ${{ github.event.repository.description }}
+          repository: jsiu/test
+          # repository: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}
+          # short-description: ${{ github.event.repository.description }}
