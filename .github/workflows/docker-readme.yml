@@ -29,4 +29,4 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           repository: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}
-          short_description: ${{ github.event.repository.description }}
+          short-description: ${{ github.event.repository.description }}
