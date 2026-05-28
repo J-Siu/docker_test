@@ -52,5 +52,5 @@ jobs:
           push: true
           sbom: true
           tags:
-            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}:${{ steps.img.outputs.ver }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}:${{ steps.img.outputs.ver }},
             ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.img.outputs.name }}:latest
